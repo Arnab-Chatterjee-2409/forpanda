@@ -81,6 +81,14 @@
       margin: 12px 0 18px;
     }
 
+    /* NEW: smaller font after "Yes" */
+    .small-msg {
+      font-size: clamp(14px, 2.2vw, 18px);
+      font-weight: 700;
+      margin: 12px 0 10px;
+      line-height: 1.25;
+    }
+
     .button-zone {
       position: relative;
       width: min(520px, 92%);
@@ -202,7 +210,7 @@
       />
     </div>
 
-    <h1>Shreya Vohra Chatterjee will you be my valentine?</h1>
+    <h1 id="questionTitle">Shreya Vohra Chatterjee will you be my valentine?</h1>
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
@@ -228,6 +236,7 @@
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
     const hint = document.getElementById("hint");
+    const questionTitle = document.getElementById("questionTitle");
 
     /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
@@ -322,6 +331,9 @@
 
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
+      questionTitle.textContent = "you said yes!, no backsies! and not like you have a choice anyways";
+      questionTitle.classList.add("small-msg");
+
       zone.style.display = "none";
       hint.style.display = "none";
       result.style.display = "block";
